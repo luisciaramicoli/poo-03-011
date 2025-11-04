@@ -9,6 +9,14 @@ public class Main {
         notSMS.registrarLog();
         notSMS.definirPrioridade(3);
         notSMS.obterNivelPrioridade();
+
+        Notificacao notificacao = new NotificacaoSms("Fulano", "14997547353","Testando",3);
+        notificacao.exibirInformacoesRemetente();
+        notificacao.enviar();
+        
+        Priorizavel objPriorizavel = new NotificacaoSms("Ciclano", "14997547353", "Novo Teste", 2);
+        objPriorizavel.definirPrioridade(6);
+        
     }
 }
 
