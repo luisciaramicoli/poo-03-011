@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class NotificacaoSms extends Notificacao {
+public class NotificacaoSms extends Notificacao implements Priorizavel {
    
     private String numeroTelefone;
     private String mensagem;
@@ -24,8 +24,24 @@ public class NotificacaoSms extends Notificacao {
     public void enviar(){
         System.out.println("Enviando SMS (Prioridade)"+ this.nivelPrioridade + ") para " + this.numeroTelefone);
     }
+    
     @Override
     public void registrarLog(){
         System.out.println("[LOG] SMS (" + "Prioridade" + this.nivelPrioridade + ") para" + this.numeroTelefone);
+    }
+
+    @Override
+    public int obterNivelPrioridade(){
+        return this.nivelPrioridade;
+    }
+
+    public void definirPrioridade(int nivel){
+        if(nivel >=1 && nivel <=10){
+            this.nivelPrioridade = nivel;
+            System.out.println("Prioridade Redefinida: " + this.nivelPrioridade);
+
+        }else {
+            System.out.println("Nivel de Prioridade Invalido (1-10)");
+        }
     }
 }
